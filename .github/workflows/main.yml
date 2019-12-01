@@ -12,6 +12,9 @@ jobs:
       - name: Check out source code
         uses: actions/checkout@v1
 
+      - name: Install dependencies
+        run: go get -u -v -d ./...  
+
       - name: Build
         run: go build .
       
