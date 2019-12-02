@@ -5,7 +5,8 @@ WORKDIR /go/src/github.com/luckymollo/dogpark-backend
 COPY . .
 
 RUN apk add git \
-        && go get -u -v -d ./... \
+        && go get "github.com/stretchr/testify/assert" \
+        && go get "github.com/gin-gonic/gin" \
         && go build -o dog-park ./
 
 FROM alpine:latest
