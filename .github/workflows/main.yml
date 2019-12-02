@@ -1,5 +1,9 @@
 name: Build and Test
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - develop
+      - master
 jobs:
   build-app:
     runs-on: [ubuntu-latest]
@@ -20,3 +24,16 @@ jobs:
       
       - name: Test
         run: go test -v .
+      
+      - name: Build Docker image
+        run: docker build -t molly-lucky/dog-park:${GITHUB_REF##*/} .
+
+      - name: Authenticate Docker with ECR
+        uses: actions/aws/cli@master
+        run: ecr get-login --region=ca-central-1
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      
+      - name: Push Docker image to ECR
+        run: docker push molly-lucky/dog-park:${GITHUB_REF##*/}
