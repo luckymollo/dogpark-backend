@@ -36,4 +36,4 @@ jobs:
           secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           region: ca-central-1
           local-image: dogpark-backend
-          image: molly-lucky/dogpark-backend:develop
+          image: molly-lucky:develop
