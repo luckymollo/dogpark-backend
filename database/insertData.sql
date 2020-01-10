@@ -1,0 +1,1 @@
+INSERT INTO dog_owner (name, age, email) VALUES ('name1', 18, 'email1');
