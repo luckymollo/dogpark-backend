@@ -38,3 +38,12 @@ func InitDb() {
 		log.Panic(err)
 	}
 }
+
+func setDataBase(database *sql.DB) {
+	db = database
+}
+
+func Close() {
+	db.Close()
+
+}

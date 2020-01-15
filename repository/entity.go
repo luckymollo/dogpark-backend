@@ -18,7 +18,7 @@ type Dog struct {
 	Description string
 }
 type DogOwner struct {
-	Id    int
+	Id    int64
 	Name  string
 	Age   int
 	Email string
